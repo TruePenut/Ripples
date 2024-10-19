@@ -79,11 +79,14 @@ while running:
             elif event.y < 0:  # Scrolled down
                 print("Scrolled down")
                 d -= 1
+        
+        if pygame.mouse.get_pressed()[0]:
+            u[pygame.mouse.get_pos()[0]//res, pygame.mouse.get_pos()[1]//res] += 0.4
     
     # Continuous disturbance at a specific point
-    u[20, -d + Ny // 2] += 0.5 * np.sin(t / 5)
+    u[20, -d + Ny // 2] += 0.4 * np.sin(t / 5)
     
-    u[20, d + Ny // 2] += 0.5 * np.sin(t / 5)
+    u[20, d + Ny // 2] += 0.4 * np.sin(t / 5)
     
     # Calculate the next time step for u
     for x in range(1, Nx - 1):
@@ -125,3 +128,4 @@ while running:
     print(pygame.mouse.get_pos())
 # Quit Pygame
 pygame.quit()
+
